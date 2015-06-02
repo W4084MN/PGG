@@ -1,0 +1,39 @@
+body {
+  padding-top: 70px;
+  background-color: #ccccff !important;
+}
+.non-overflow {
+    resize: none !important;
+    height: 200px !important;
+}
+.magnifier-resize {
+    height:  20% !important;
+    width: 15% !important;
+}
+.magnifier-syllable {
+    cursor: pointer;
+    width: auto;
+    position: relative;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    transition: 0.25s ease;
+    -webkit-transition: 0.25s ease;
+    -moz-transition: 0.25s ease;
+}
+.magnifier-syllable:hover {
+    cursor: pointer;
+    -webkit-transform: scale(1.5,1.5);
+    -moz-transform:scale(1.5,1.5);
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+}
+.setcolor-line {
+    color: #269abc !important;
+}
+.syllable-scrolldown {
+    height: 300px !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
