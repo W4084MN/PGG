@@ -6,12 +6,12 @@ $src_paragraph = strip_tags($src_paragraph);
 $src_paragraph = trim($src_paragraph);
 $respone_re = array();
 
-function w_data_words($e) {    
+function w_data_words($e) {
     if ($e != "") {
         $e = strtolower($e); //all lowercase
         $path = "../files/words.txt";
         $e = preg_replace('/^\.+|\.+$/', "", $e); //remove . (dot)
-        $words = preg_split("/[\s,;:?!&()\"]+/", $e);
+        $words = preg_split("/[\s,;:?!&\.'\"(){}]+/", $e);
         file_put_contents($path, implode(PHP_EOL, $words));
     }
 }

@@ -9,7 +9,7 @@ function saveData() {
         if (msg == "0xd0a") {
             $("#level-paragraph").slideDown('fast');
             var gotolvl = $("#level-paragraph");
-            $('html,body').animate({scrollTop: gotolvl.offset().top}, 'slow');
+            // $('html,body').animate({scrollTop: gotolvl.offset().top}, 'slow');
             $("#empty-para").fadeOut('fast');
         }
         else {
@@ -19,7 +19,7 @@ function saveData() {
 }
 
 function callWordsSyllable() {
-    function countWords() {
+    function countWords() { //Show Words
         $("#cntwords").empty(true);
         var chkSyllable = $("#hdnValueSyllable").val();
         $.post("api/api_words_count.php", {
@@ -28,13 +28,17 @@ function callWordsSyllable() {
         function (data) {
             var obj = data;
             var msg = obj.msg;
+            var default_data = 0;
 //            syllableWords: the future can fixible for another condition
             if (msg === parseInt(msg)) {
                 $("#cntwords").empty(true).append(msg);
             }
+            else {
+                $("#cntwords").empty(true).append(default_data);
+            }
         }, 'json');
     }
-    function countSyllables() {
+    function countSyllables() { //Show Syllable
         var content = $("#src-paragraph").val();
         $.post("api/api_syllable_counter.php", {src_p: content},
         function (data) {
@@ -49,7 +53,7 @@ function callWordsSyllable() {
     countSyllables();
 }
 
-function calAverage() {
+function calAverage() { //Show SComS
     var calaverage = $("#src-paragraph").val();
     $.post("config/syllable_sylla_count.php", {src_p: calaverage},
     function (data) {
@@ -58,6 +62,20 @@ function calAverage() {
             $("#averageboth").empty(true).append(msg[1]);
         }
     });
+}
+
+function readWordslist() {
+    var readwslist = $("#hdnValueSyllable").val();
+    $.post("api/api_words_eachcount.php", {
+            hdnValueSyllable_: readwslist
+        },
+        function (data) {
+            var obj = data;
+            var msg = obj.msg;
+            if (msg != "") {
+                $("#syllaExam").empty(true).append(msg);
+            }            
+        }, 'json');
 }
 
 function syllableToggle() {

@@ -16,7 +16,7 @@ if (!isset($_SESSION['uSname'])) {
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Overall</title>
+        <title>Passage Grading</title>
 
         <script src="js/onSyllable.js" type="text/javascript"></script>
 
@@ -63,7 +63,7 @@ if (!isset($_SESSION['uSname'])) {
                     <div class="text-center">
                         <h2>Readability index calculator</h2>
                         <h3>โปรดใส่เนื้อความที่ต้องการประเมินลงในช่องว่างข้างล่าง</h3>
-                        <textarea id="src-paragraph" name="src_p" class="form-control non-overflow" placeholder="กรอกเนื้อความที่ต้องการลงภายในช่องว่างนี้..." required autofocus="" onkeyup="saveData();callWordsSyllable();calAverage();"></textarea>
+                        <textarea id="src-paragraph" name="src_p" class="form-control non-overflow" placeholder="กรอกเนื้อความที่ต้องการลงภายในช่องว่างนี้..." required autofocus="" onkeyup="callWordsSyllable();calAverage();" oninput="saveData();" onpaste="saveData();"></textarea>
                     </div>
                     <div class="help-block">
                         <!--<a id="exam_para1" class="btn btn-default">ตัวอย่าง Paragraph....</a>-->
@@ -79,11 +79,6 @@ if (!isset($_SESSION['uSname'])) {
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8">
                     <div class="well">
-<!--                        <div class="container">
-                            <div class="pull-right">
-                                <a id="reset_evalu" class="btn btn-sm btn-default">รีเซ็ตการประเมินใหม่</a>
-                            </div>
-                        </div>-->
                         <div class="text-center"><h2>ระดับความยากของเนื้อความ = มัธยมศึกษาปีที่ 2</h2></div>
                         <hr>
                         <div class="tabbable" id="tabs-53845">
@@ -101,7 +96,6 @@ if (!isset($_SESSION['uSname'])) {
                                     <a href="#04-Tense" data-toggle="tab">Tense</a>
                                 </li>
                                 <li class="pull-right">
-                                    <!--<a id="reset_evalu" class="btn btn-default">Reset</a>-->
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -158,6 +152,13 @@ if (!isset($_SESSION['uSname'])) {
                                                     <div class="col-lg-6">5 พยางค์</div>
                                                     <div class="col-lg-6">มี N คำ</div>
                                                 </div>
+                                                <hr>
+                                                <div><button onclick="readWordslist()">Sub_Syllable</button><a class="btn" href="api/api_words_eachcount.php">DEBUG</a></div>
+                                                <div class="container">
+                                                    <div class="col-lg-12">
+                                                        <div id="syllaExam"></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -189,35 +190,13 @@ if (!isset($_SESSION['uSname'])) {
     <script src="js/jquery-1.11.2.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript">
-        $("#reset_evalu").click(function () {
-            //gototop
-            $("#src-paragraph").val("");
-            $("#src-paragraph").focus();
-            var aTag = $("#a-tracked");
-            $('html,body').animate({scrollTop: aTag.offset().top}, 'slow');            
-            $("#level-paragraph").slideUp('fast', function () {
-                $("#src-paragraph").empty(true);
-                $("#cntwords").empty(true);
-                $("#syllable-line2").slideUp('fast');
-                $("#syllable-line3").slideUp('fast');
-                $("#syllable-line2-temp1").slideUp('fast');
-                $("#syllable-line2-temp2").slideUp('fast');
-            });
-        });
-    </script>
-    <script type="text/javascript" language="javascript">
         $(document).ready(function () {
             $("#level-paragraph").hide(true);
             $("#mem-menu").on('click', function () {
                 $("#sub-mem-menu").slideToggle('fast');
             });
-        });
+        });        
         
-        $("#empty-para").empty();
-            $('.close').on("click", function () {
-                $("#empty-para").hide();
-            });
-            
         $("#syllable-line2").hide();
         $("#syllable-line2-temp1").hide();
         $("#syllable-line2-temp2").hide();

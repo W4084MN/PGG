@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/PGG/files/words.txt</file>
+            <file>file:/C:/xampp/htdocs/PGG/api/api_anonymous_w.php</file>
+            <file>file:/C:/xampp/htdocs/PGG/index.php</file>
+            <file>file:/C:/xampp/htdocs/PGG/api/api_words_count.php</file>
+            <file>file:/C:/xampp/htdocs/PGG/files/sentence.txt</file>
+            <file>file:/C:/xampp/htdocs/PGG/overall.php</file>
+            <file>file:/C:/xampp/htdocs/PGG/js/onSyllable.js</file>
+        </group>
     </open-files>
 </project-private>

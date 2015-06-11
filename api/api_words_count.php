@@ -5,7 +5,7 @@ $arr_cb = array();
 $hdn_syllable = $_POST['hdnValueSyllable_'];
 
 
-if ($hdn_syllable != "") {
+if (isset($hdn_syllable)) {
     $count = 0;
     $path = "../files/words.txt";
     $f = fopen($path, "r");
